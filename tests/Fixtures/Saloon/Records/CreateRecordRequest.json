@@ -1,0 +1,20 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Server": "nginx",
+        "Date": "Thu, 02 Jan 2025 13:27:24 GMT",
+        "Content-Type": "application\/json;charset=utf-8",
+        "Content-Length": "656",
+        "Connection": "keep-alive",
+        "OData-Version": "4.01",
+        "Location": "REDACTED",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Access-Control-Allow-Origin": "REDACTED",
+        "Access-Control-Allow-Credentials": "True",
+        "Access-Control-Allow-Headers": "Content-Type,Authorization"
+    },
+    "data": "{\"@context\": \"https:\/\/FM_HOST\/fmi\/odata\/v4\/Tasks\/$metadata#Assignees\/$entity\",\"@id\": \"https:\/\/FM_HOST\/fmi\/odata\/v4\/Tasks\/Assignees('BEDEBAFC-9F16-40B8-8118-D56D9ABB91D1')\",\"@editLink\": \"https:\/\/FM_HOST\/fmi\/odata\/v4\/Tasks\/Assignees('BEDEBAFC-9F16-40B8-8118-D56D9ABB91D1')\",\"First Name\": \"John\",\"Last Name\": \"Doe\",\"Title\": null,\"Company\": null,\"Group\": null,\"Phone\": null,\"Email\": \"j.doe@company.com\",\"Name\": \"John Doe\",\"Initial\": \"D\",\"PrimaryKey\": \"BEDEBAFC-9F16-40B8-8118-D56D9ABB91D1\",\"CreatedBy\": \"api\",\"ModifiedBy\": \"api\",\"CreationTimestamp\": \"2025-01-02T13:27:24Z\",\"ModificationTimestamp\": \"2025-01-02T13:27:24Z\"}"
+}

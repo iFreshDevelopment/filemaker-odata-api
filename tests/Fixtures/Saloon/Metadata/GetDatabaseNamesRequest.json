@@ -1,0 +1,19 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Server": "nginx",
+        "Date": "Thu, 02 Jan 2025 14:00:03 GMT",
+        "Content-Type": "application\/json;charset=utf-8",
+        "Content-Length": "179",
+        "Connection": "keep-alive",
+        "OData-Version": "4.01",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Access-Control-Allow-Origin": "REDACTED",
+        "Access-Control-Allow-Credentials": "True",
+        "Access-Control-Allow-Headers": "Content-Type,Authorization"
+    },
+    "data": "{\"@context\": \"https:\/\/FM_HOST\/fmi\/odata\/v4\/$metadata\",\"value\": [{\"name\": \"Tasks\",\"kind\": \"EntityContainer\",\"url\": \"https:\/\/FM_HOST\/fmi\/odata\/v4\/Tasks\"}]}"
+}

@@ -1,0 +1,36 @@
+{
+    "name": "ifresh/filemaker-odata-api",
+    "version": "1.0.0",
+    "type": "library",
+    "require": {
+        "saloonphp/saloon": "^3.10",
+        "illuminate/support": "^11.36"
+    },
+    "autoload": {
+        "psr-4": {
+            "IFresh\\FileMakerODataApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom Kuijer",
+            "email": "t.kuijer@ifresh.nl"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.7",
+        "vlucas/phpdotenv": "^5.6",
+        "laravel/pint": "^1.18",
+        "phpstan/phpstan": "^2.0"
+    }
+}
