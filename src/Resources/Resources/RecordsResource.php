@@ -2,6 +2,7 @@
 
 namespace IFresh\FileMakerODataApi\Resources\Resources;
 
+use IFresh\FileMakerODataApi\QueryOptions;
 use IFresh\FileMakerODataApi\Requests\Records\CreateRecordRequest;
 use IFresh\FileMakerODataApi\Requests\Records\DeleteRecordRequest;
 use IFresh\FileMakerODataApi\Requests\Records\FetchRecordsRequest;
@@ -54,11 +55,12 @@ class RecordsResource extends BaseResource
         return $this->connector->send($request);
     }
 
-    public function fetchRecords()
+    public function fetchRecords(?QueryOptions $queryOptions = null): Response
     {
         $request = new FetchRecordsRequest(
             $this->database,
-            $this->table
+            $this->table,
+            $queryOptions
         );
 
         return $this->connector->send($request)->dto();

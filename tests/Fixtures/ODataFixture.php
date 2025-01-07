@@ -24,5 +24,4 @@ class ODataFixture extends Fixture
             'Location' => 'REDACTED',
         ];
     }
-
 }
