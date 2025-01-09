@@ -2,7 +2,6 @@
 
 namespace IFresh\FileMakerODataApi\Requests\Records;
 
-use IFresh\FileMakerODataApi\QueryOptions;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -26,6 +25,6 @@ class FetchSingleRecordRequest extends Request
 
     public function createDtoFromResponse(Response $response): array
     {
-        return $response->json('value');
+        return $response->json();
     }
 }

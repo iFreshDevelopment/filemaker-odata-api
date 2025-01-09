@@ -3,9 +3,7 @@
 namespace IFresh\FileMakerODataApi\Requests\Records;
 
 use IFresh\FileMakerODataApi\QueryOptions;
-use Psr\Http\Message\UriInterface;
 use Saloon\Enums\Method;
-use Saloon\Helpers\URLHelper;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
 

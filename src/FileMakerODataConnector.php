@@ -7,21 +7,17 @@ use IFresh\FileMakerODataApi\Requests\PendingFileMakerRequest;
 use IFresh\FileMakerODataApi\Resources\Resources\MetadataResource;
 use IFresh\FileMakerODataApi\Resources\Resources\RecordsResource;
 use Override;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\UriInterface;
 use Saloon\Contracts\Authenticator;
-use Saloon\Helpers\URLHelper;
 use Saloon\Http\Auth\BasicAuthenticator;
 use Saloon\Http\Connector;
 use Saloon\Http\Faking\MockClient;
-use Saloon\Http\PendingRequest;
 use Saloon\Http\Request;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 
 class FileMakerODataConnector extends Connector
 {
-    const ODATA_VERSION = 'v4';
+    const string ODATA_VERSION = 'v4';
 
     use AcceptsJson;
     use AlwaysThrowOnErrors;
@@ -30,6 +26,7 @@ class FileMakerODataConnector extends Connector
         public readonly string $host,
         public readonly string $username,
         public readonly string $password,
+        public readonly ?string $database = null,
     ) {
         //
     }
@@ -61,10 +58,9 @@ class FileMakerODataConnector extends Connector
     }
 
     public function records(
-        string $database,
         string $table
     ): RecordsResource {
-        return new RecordsResource($this, $database, $table);
+        return new RecordsResource($this, $this->database, $table);
     }
 
     #[Override]
