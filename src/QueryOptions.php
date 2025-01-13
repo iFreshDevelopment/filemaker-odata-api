@@ -10,6 +10,7 @@ class QueryOptions
         public ?int $limit = null,
         public ?int $offset = null,
         public bool $withCount = false,
+        public ?string $select = null,
     ) {
         //
     }
@@ -22,6 +23,7 @@ class QueryOptions
             '$top' => $this->limit,
             '$skip' => $this->offset,
             '$count' => $this->withCount ? 'true' : null,
+            '$select' => $this->select,
         ];
 
         return array_filter(
