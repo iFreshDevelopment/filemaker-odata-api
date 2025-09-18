@@ -19,6 +19,10 @@ class DeleteRecordRequest extends Request
 
     public function resolveEndpoint(): string
     {
+        if (ctype_digit($this->primaryKeyValue)) {
+            return "/{$this->database}/{$this->table}({$this->primaryKeyValue})";
+        }
+
         return "/{$this->database}/{$this->table}('{$this->primaryKeyValue}')";
     }
 }

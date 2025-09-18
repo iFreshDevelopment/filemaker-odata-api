@@ -13,14 +13,18 @@ class FetchSingleRecordRequest extends Request
     public function __construct(
         private readonly string $database,
         private readonly string $table,
-        private readonly string $primaryKey,
+        private readonly string $primaryKeyValue,
     ) {
         //
     }
 
     public function resolveEndpoint(): string
     {
-        return "/{$this->database}/{$this->table}('{$this->primaryKey}')";
+        if (ctype_digit($this->primaryKeyValue)) {
+            return "/{$this->database}/{$this->table}({$this->primaryKeyValue})";
+        }
+
+        return "/{$this->database}/{$this->table}('{$this->primaryKeyValue}')";
     }
 
     public function createDtoFromResponse(Response $response): array
