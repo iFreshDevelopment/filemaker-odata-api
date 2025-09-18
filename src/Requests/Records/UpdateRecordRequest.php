@@ -25,6 +25,10 @@ class UpdateRecordRequest extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
+        if (ctype_digit($this->primaryKeyValue)) {
+            return "/{$this->database}/{$this->table}({$this->primaryKeyValue})";
+        }
+
         return "/{$this->database}/{$this->table}('{$this->primaryKeyValue}')";
     }
 
