@@ -56,6 +56,21 @@ class RecordsResource extends BaseResource
         return $this->connector->send($request);
     }
 
+    public function getRecordCount(?QueryOptions $queryOptions = null): int
+    {
+        $queryOptions->withCount = true;
+        $queryOptions->offset = 0;
+        $queryOptions->limit = 1;
+
+        $request = new FetchRecordsRequest(
+            $this->database,
+            $this->table,
+            $queryOptions
+        );
+
+        return $this->connector->send($request)->json('@count');
+    }
+
     public function fetchRecords(?QueryOptions $queryOptions = null): array
     {
         $request = new FetchRecordsRequest(
