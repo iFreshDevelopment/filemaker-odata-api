@@ -1,6 +1,6 @@
 {
     "name": "ifresh/filemaker-odata-api",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "type": "library",
     "require": {
         "saloonphp/saloon": "^3.10",
@@ -24,6 +24,10 @@
         {
             "name": "Stephan Bouman",
             "email": "s.bouman@ifresh.nl"
+        },
+        {
+            "name": "Yannick van der Linden",
+            "email": "y.vanderlinden@ifresh.nl"
         }
     ],
     "config": {

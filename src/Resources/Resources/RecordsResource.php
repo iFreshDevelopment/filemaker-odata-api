@@ -5,6 +5,7 @@ namespace IFresh\FileMakerODataApi\Resources\Resources;
 use IFresh\FileMakerODataApi\QueryOptions;
 use IFresh\FileMakerODataApi\Requests\Records\CreateRecordRequest;
 use IFresh\FileMakerODataApi\Requests\Records\DeleteRecordRequest;
+use IFresh\FileMakerODataApi\Requests\Records\FetchBinaryValueRequest;
 use IFresh\FileMakerODataApi\Requests\Records\FetchRecordsRequest;
 use IFresh\FileMakerODataApi\Requests\Records\FetchSingleRecordRequest;
 use IFresh\FileMakerODataApi\Requests\Records\UpdateRecordRequest;
@@ -91,5 +92,17 @@ class RecordsResource extends BaseResource
         );
 
         return $this->connector->send($request)->dto();
+    }
+
+    public function fetchBinaryValue(string $primaryKey, string $fieldName): string
+    {
+        $request = new FetchBinaryValueRequest(
+            $this->database,
+            $this->table,
+            $primaryKey,
+            $fieldName
+        );
+
+        return $this->connector->send($request)->body();
     }
 }
