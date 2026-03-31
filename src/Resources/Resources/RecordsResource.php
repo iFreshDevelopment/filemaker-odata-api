@@ -3,6 +3,7 @@
 namespace IFresh\FileMakerODataApi\Resources\Resources;
 
 use IFresh\FileMakerODataApi\QueryOptions;
+use IFresh\FileMakerODataApi\RecordsQueryBuilder;
 use IFresh\FileMakerODataApi\Requests\Records\CreateRecordRequest;
 use IFresh\FileMakerODataApi\Requests\Records\DeleteRecordRequest;
 use IFresh\FileMakerODataApi\Requests\Records\FetchBinaryValueRequest;
@@ -25,88 +26,129 @@ class RecordsResource extends BaseResource
 
     public function createRecord(array $data)
     {
-        $request = new CreateRecordRequest(
+        return $this->connector->send(new CreateRecordRequest(
             $this->database,
             $this->table,
             $data
-        );
+        ))->dto();
+    }
 
-        return $this->connector->send($request)->dto();
+    public function query(): RecordsQueryBuilder
+    {
+        return new RecordsQueryBuilder($this);
+    }
+
+    public function where(string|callable $field, mixed $operator = null, mixed $value = null): RecordsQueryBuilder
+    {
+        return $this->query()->where($field, $operator, $value);
+    }
+
+    public function orWhere(string|callable $field, mixed $operator = null, mixed $value = null): RecordsQueryBuilder
+    {
+        return $this->query()->orWhere($field, $operator, $value);
+    }
+
+    public function whereRaw(string $expression): RecordsQueryBuilder
+    {
+        return $this->query()->whereRaw($expression);
+    }
+
+    public function whereContains(string $field, string $value): RecordsQueryBuilder
+    {
+        return $this->query()->whereContains($field, $value);
+    }
+
+    public function orWhereRaw(string $expression): RecordsQueryBuilder
+    {
+        return $this->query()->orWhereRaw($expression);
+    }
+
+    public function whereStartsWith(string $field, string $value): RecordsQueryBuilder
+    {
+        return $this->query()->whereStartsWith($field, $value);
+    }
+
+    public function orWhereStartsWith(string $field, string $value): RecordsQueryBuilder
+    {
+        return $this->query()->orWhereStartsWith($field, $value);
+    }
+
+    public function orWhereContains(string $field, string $value): RecordsQueryBuilder
+    {
+        return $this->query()->orWhereContains($field, $value);
+    }
+
+    public function orderBy(string $field, string $direction = 'asc'): RecordsQueryBuilder
+    {
+        return $this->query()->orderBy($field, $direction);
+    }
+
+    public function select(string ...$fields): RecordsQueryBuilder
+    {
+        return $this->query()->select(...$fields);
     }
 
     public function updateRecord(string $primaryKey, array $data)
     {
-        $request = new UpdateRecordRequest(
+        return $this->connector->send(new UpdateRecordRequest(
             $this->database,
             $this->table,
             $primaryKey,
             $data
-        );
-
-        return $this->connector->send($request)->dto();
+        ))->dto();
     }
 
     public function deleteRecord(string $key): Response
     {
-        $request = new DeleteRecordRequest(
+        return $this->connector->send(new DeleteRecordRequest(
             $this->database,
             $this->table,
             $key
-        );
-
-        return $this->connector->send($request);
+        ));
     }
 
     public function getRecordCount(?QueryOptions $queryOptions = null): int
     {
         $queryOptions ??= new QueryOptions;
-
         $queryOptions->withCount = true;
         $queryOptions->offset = 0;
         $queryOptions->limit = 1;
 
-        $request = new FetchRecordsRequest(
-            $this->database,
-            $this->table,
-            $queryOptions
-        );
-
-        return $this->connector->send($request)->json('@count');
+        return $this->connector->send($this->makeFetchRecordsRequest($queryOptions))->json('@count');
     }
 
     public function fetchRecords(?QueryOptions $queryOptions = null): array
     {
         $queryOptions ??= new QueryOptions;
 
-        $request = new FetchRecordsRequest(
-            $this->database,
-            $this->table,
-            $queryOptions
-        );
-
-        return $this->connector->send($request)->dto();
+        return $this->connector->send($this->makeFetchRecordsRequest($queryOptions))->dto();
     }
 
     public function fetchSingleRecord(string $primaryKey): array
     {
-        $request = new FetchSingleRecordRequest(
+        return $this->connector->send(new FetchSingleRecordRequest(
             $this->database,
             $this->table,
             $primaryKey
-        );
-
-        return $this->connector->send($request)->dto();
+        ))->dto();
     }
 
     public function fetchBinaryValue(string $primaryKey, string $fieldName): string
     {
-        $request = new FetchBinaryValueRequest(
+        return $this->connector->send(new FetchBinaryValueRequest(
             $this->database,
             $this->table,
             $primaryKey,
             $fieldName
-        );
+        ))->body();
+    }
 
-        return $this->connector->send($request)->body();
+    private function makeFetchRecordsRequest(QueryOptions $queryOptions): FetchRecordsRequest
+    {
+        return new FetchRecordsRequest(
+            $this->database,
+            $this->table,
+            $queryOptions,
+        );
     }
 }
