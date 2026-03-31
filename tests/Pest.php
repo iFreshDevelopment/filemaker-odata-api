@@ -6,6 +6,7 @@ use Saloon\Http\Faking\Fixture;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\PendingRequest;
 use Tests\Fixtures\ODataFixture;
+use Tests\TestCase;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use Tests\Fixtures\ODataFixture;
 |
 */
 
-pest()->extend(Tests\TestCase::class)->in('Feature');
+pest()->extend(TestCase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
