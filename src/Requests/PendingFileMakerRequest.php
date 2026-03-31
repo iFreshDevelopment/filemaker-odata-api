@@ -18,11 +18,14 @@ class PendingFileMakerRequest extends PendingRequest
 
         $existingQuery = URLHelper::parseQueryString($uri->getQuery());
 
-        return $uri->withQuery(
-            http_build_query(
-                data: array_merge($existingQuery, $this->query()->all()),
-                encoding_type: PHP_QUERY_RFC3986,
-            )
-        );
+        $query = collect(array_merge($existingQuery, $this->query()->all()))
+            ->map(fn (mixed $value, string $key): string => sprintf(
+                '%s=%s',
+                rawurlencode($key),
+                rawurlencode((string) $value),
+            ))
+            ->implode('&');
+
+        return $uri->withQuery($query);
     }
 }
