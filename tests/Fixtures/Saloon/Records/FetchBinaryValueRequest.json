@@ -1,0 +1,12 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Server": "nginx",
+        "Date": "Thu, 02 Jan 2025 13:31:40 GMT",
+        "Content-Type": "application/octet-stream",
+        "Content-Length": "25",
+        "Connection": "keep-alive",
+        "OData-Version": "4.01"
+    },
+    "data": "fake-binary-image-content"
+}

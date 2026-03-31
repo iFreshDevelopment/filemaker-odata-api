@@ -59,6 +59,8 @@ class RecordsResource extends BaseResource
 
     public function getRecordCount(?QueryOptions $queryOptions = null): int
     {
+        $queryOptions ??= new QueryOptions;
+
         $queryOptions->withCount = true;
         $queryOptions->offset = 0;
         $queryOptions->limit = 1;
@@ -74,6 +76,8 @@ class RecordsResource extends BaseResource
 
     public function fetchRecords(?QueryOptions $queryOptions = null): array
     {
+        $queryOptions ??= new QueryOptions;
+
         $request = new FetchRecordsRequest(
             $this->database,
             $this->table,

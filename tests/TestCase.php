@@ -14,13 +14,16 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $dotenv = Dotenv::createImmutable(__DIR__.'/..');
-        $dotenv->load();
+        if (file_exists(__DIR__.'/../.env')) {
+            $dotenv = Dotenv::createImmutable(__DIR__.'/..');
+            $dotenv->load();
+        }
 
         $connector = new FileMakerODataConnector(
-            host: $_ENV['FM_HOST'],
-            username: $_ENV['FM_USERNAME'],
-            password: $_ENV['FM_PASSWORD'],
+            host: $_ENV['FM_HOST'] ?? 'https://example.com',
+            username: $_ENV['FM_USERNAME'] ?? 'username',
+            password: $_ENV['FM_PASSWORD'] ?? 'password',
+            database: $_ENV['FM_DATABASE'] ?? 'Tasks',
         );
 
         $connector->withMockClient(\mockClient());

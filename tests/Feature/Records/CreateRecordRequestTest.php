@@ -2,7 +2,7 @@
 
 it('can create a record', function () {
     $response = $this->connector
-        ->records('Tasks', 'Assignees')
+        ->records('Assignees')
         ->createRecord([
             'First Name' => 'John',
             'Last Name' => 'Doe',

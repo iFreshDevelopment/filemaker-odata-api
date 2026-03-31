@@ -1,0 +1,12 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Server": "nginx",
+        "Date": "Thu, 02 Jan 2025 13:31:02 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "1182",
+        "Connection": "keep-alive",
+        "OData-Version": "4.01"
+    },
+    "data": "{\"@context\":\"https://FM_HOST/fmi/odata/v4/Tasks/$metadata#Assignees\",\"@count\":2,\"value\":[{\"@id\":\"https://FM_HOST/fmi/odata/v4/Tasks/Assignees('BEDEBAFC-9F16-40B8-8118-D56D9ABB91D1')\",\"First Name\":\"Jane\",\"Last Name\":\"Doe\",\"Email\":\"jane.doe@company.com\",\"PrimaryKey\":\"BEDEBAFC-9F16-40B8-8118-D56D9ABB91D1\"},{\"@id\":\"https://FM_HOST/fmi/odata/v4/Tasks/Assignees('4FFB6DCE-6EC0-46D9-ACB5-21E02CA74806')\",\"First Name\":\"John\",\"Last Name\":\"Doe\",\"Email\":\"john.doe@company.com\",\"PrimaryKey\":\"4FFB6DCE-6EC0-46D9-ACB5-21E02CA74806\"}]}"
+}
